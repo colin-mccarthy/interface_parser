@@ -1,0 +1,22 @@
+---
+- hosts: ios
+  gather_facts: no
+  connection: network_cli
+  roles:
+    - ansible-network.network-engine
+
+  tasks:
+
+  - name: show run
+    ios_command:
+      commands:
+        - show run | beg interface
+    register: version
+
+  - name: parse show run | beg int
+    command_parser:
+      file: "parsers/sh_run_int.yaml"
+      content: "{{ version.stdout.0 }}"
+
+
+  - debug: var=interfaces
