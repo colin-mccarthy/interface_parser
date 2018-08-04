@@ -19,6 +19,24 @@
       regex: "interface (.*)"
       content: "{{ item }}"
     register: name
+
+  - name: match description
+    pattern_match:
+      regex: "description (.*)"
+      content: "{{ item }}"
+    register: description
+
+  - name: match ip_helper
+    pattern_match:
+      regex: "ip helper-address (.*)"
+      content: "{{ item }}"
+    register: ip_helper
+
+  - name: match ip_address
+    pattern_match:
+      regex: "ip address (.*)"
+      content: "{{ item }}"
+    register: ip_address
   loop: "{{ section }}"
   register: values
 
@@ -33,3 +51,9 @@
       object:
         - key: name
           value: "{{ item.name.matches.0 }}"
+        - key: ip_addess
+          value: "{{ item.ip_address.matches.0 }}"
+        - key: description
+          value: "{{ item.description.matches.0 }}"
+        - key: ip_helper
+          value: "{{ item.ip_helper.matches.0 }}"
