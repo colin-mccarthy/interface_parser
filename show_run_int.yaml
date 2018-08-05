@@ -29,6 +29,7 @@
   - name: match ip_helper
     pattern_match:
       regex: "ip helper-address (.*)"
+      match_all: yes
       content: "{{ item }}"
     register: ip_helper
 
