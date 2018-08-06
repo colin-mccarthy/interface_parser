@@ -57,4 +57,4 @@
         - key: description
           value: "{{ item.description.matches.0 }}"
         - key: ip_helper
-          value: "{{ item.ip_helper.matches.0 }}"
+          value: "{{ item.ip_helper | map(attribute='matches') | list }}"
