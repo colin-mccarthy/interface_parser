@@ -53,7 +53,7 @@
         - key: name
           value: "{{ item.name.matches.0 }}"
         - key: ip_addess
-          value: "{{ item.ip_address.matches.0 }}"
+          value: "{{ item.ip_address | map(attribute='matches') | list }}"
         - key: description
           value: "{{ item.description.matches.0 }}"
         - key: ip_helper
