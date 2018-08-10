@@ -19,5 +19,5 @@
       content: "{{ version.stdout.0 }}"
 
 
-#  - debug: var=interfaces
+#  - debug: var=interfaces["GigabitEthernet0/1"].name
   - debug: var=ansible_facts  
