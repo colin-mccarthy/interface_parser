@@ -1,0 +1,18 @@
+---
+- hosts: ios
+  gather_facts: no
+  connection: network_cli
+  roles:
+    - ansible-network.network-engine
+
+  tasks:
+
+
+  - name: parse show run | beg int
+    command_parser:
+      file: "parser_templates/show_run_int.yaml"
+      content: "{{ lookup('file' , '192.168.161.9') }}"
+
+
+#  - debug: var=interfaces["GigabitEthernet0/1"].name
+  - debug: var=interfaces
