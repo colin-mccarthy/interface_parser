@@ -19,5 +19,19 @@
       content: "{{ version.stdout.0 }}"
 
 
-#  - debug: var=interfaces["GigabitEthernet0/1"].name
-  - debug: var=ansible_facts  
+  - debug: var=interfaces["GigabitEthernet0/1"].name
+
+  - debug: var=interfaces["GigabitEthernet0/1"].description
+
+  - debug: var=interfaces["GigabitEthernet0/1"].ip_address
+
+  - debug: var=interfaces["GigabitEthernet0/1"].ip_helper
+
+
+  - debug: 
+      msg:
+      -  "The Description is {{ interfaces['GigabitEthernet0/1'].description }}"
+
+
+
+#  - debug: var=ansible_facts  
